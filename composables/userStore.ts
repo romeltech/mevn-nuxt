@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { IUser } from "~~/types";
+import { IUser } from "../types";
 // import useToast from "./useToast";
 
 export const useUsertore = defineStore("user-store", {

@@ -1,4 +1,5 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
+// import { defineNuxtConfig } from "nuxt/config";
 export default defineNuxtConfig({
   css: [
     "vuetify/lib/styles/main.sass",
@@ -18,9 +19,7 @@ export default defineNuxtConfig({
     MONGO_URI: process.env.MONGO_URI,
   },
   nitro: {
-    plugins: ["@/server/db/index.ts"]
+    plugins: ["@/server/db/index.ts"],
   },
-  modules: [
-    '@pinia/nuxt',
-  ],
+  modules: ["@pinia/nuxt"],
 });
