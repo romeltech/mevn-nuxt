@@ -1,8 +1,8 @@
 <template>
-    <v-container class="py-8 px-6" fluid>
-        <v-app-bar title="Posts" dense class="elevation-1"></v-app-bar>
+    <v-app-bar title="Posts" density="compact" class="elevation-1"></v-app-bar>
+    <v-container>
         <v-row>
-            <div class="col-12 col-md-10 mx-auto" v-if="posts">
+            <div class="v-col-12 v-col-xl-10 mx-auto" v-if="posts">
                 <v-card max-width="100%">
                     <v-table width="100%">
                         <thead>
@@ -31,7 +31,7 @@
 
 <script setup lang="ts">
 
-import { usePoststore } from '../../../composables/postStore'
+// import { usePoststore } from '../../../composables/postStore'
 // call post store
 const postStore = usePoststore();
 
@@ -39,11 +39,14 @@ const postStore = usePoststore();
 useAsyncData(async () => await postStore.getAll(), {
     initialCache: false,
 });
+
 // await postStore.getAll();
 // thePosts.value = postStore
 // console.log("thePosts", thePosts.value);
 
+// const posts = ref({})
 // get data from api using useFetch
 const { data: posts } = await useFetch('/api/posts');
+
 
 </script>

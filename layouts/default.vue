@@ -35,12 +35,12 @@ export default {
             {
                 location: "/about",
                 text: "About",
-                icon: "mdi-home"
+                icon: "mdi-pencil"
             },
             {
                 location: "/products",
                 text: "Products",
-                icon: "mdi-home"
+                icon: "mdi-package-variant-closed"
             },
             {
                 location: "/admin/posts",

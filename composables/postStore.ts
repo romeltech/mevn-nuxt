@@ -12,7 +12,7 @@ export const usePoststore = defineStore("post-store", {
       try {
         let data = await $fetch<IPost[]>("/api/posts");
         this.posts = data;
-        // console.log("this.posts has been fetched");
+        console.log("this.posts has been fetched");
         return data as IPost[];
       } catch (e) {
         // useToast().error(e.message);
@@ -20,8 +20,6 @@ export const usePoststore = defineStore("post-store", {
     },
     // Create a new Post
     async create(data: IPost[]) {
-		console.log("data", data);
-		
       await $fetch("/api/posts/create", {
         method: "POST",
         body: data,

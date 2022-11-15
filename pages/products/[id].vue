@@ -1,13 +1,18 @@
 <template>
-    <div class="m-container">
-        <ProductDetails :product="product" />
-    </div>
+    <v-app-bar :title="product.title" density="compact" class="elevation-1"></v-app-bar>
+    <v-container>
+        <v-row>
+            <div class="v-col-12 v-col-xl-10 mx-auto">
+                <ProductDetails :product="product" />
+            </div>
+        </v-row>
+    </v-container>
 </template>
 
 <script setup>
-definePageMeta({
-    layout: 'products'
-})
+// definePageMeta({
+//     layout: 'products'
+// })
 const { id } = useRoute().params
 const uri = "https://fakestoreapi.com/products/" + id
 // fetch the product details
