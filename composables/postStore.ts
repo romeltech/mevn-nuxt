@@ -1,53 +1,53 @@
 import { defineStore } from "pinia";
-import { IUser } from "../types";
+import { IPost } from "../types";
 // import useToast from "./useToast";
 
-export const useUserstore = defineStore("user-store", {
+export const usePoststore = defineStore("post-store", {
 	state: () => ({
-		users: [] as IUser[],
+		posts: [] as IPost[],
 	}),
 	actions: {
-		// Get all users from DB
+		// Get all posts from DB
 		async getAll() {
 			try {
-				let data = await $fetch<IUser[]>("/api/users");
-				this.users = data;
-				return data as IUser[];
+				let data = await $fetch<IPost[]>("/api/posts");
+				this.posts = data;
+				return data as IPost[];
 			} catch (e) {
 				// useToast().error(e.message);
 			}
 		},
-		// Create a new author
-		async create(fullname: string) {
-			await $fetch("/api/users/create", {
+		// Create a new Post
+		async create(title: string) {
+			await $fetch("/api/posts/create", {
 				method: "POST",
-				body: { fullname },
+				body: { title },
 			})
 				.catch((e) => {
 					// useToast().error(e.data.message);
 				})
 				.then(async () => {
 					await this.getAll();
-					// useToast().success("Author created");
+					// useToast().success("Post created");
 				});
 		},
-		// Update an author
-		async update(id: string, fullname: string) {
-			await $fetch(`/api/users/${id}`, {
+		// Update an Post
+		async update(id: string, title: string) {
+			await $fetch(`/api/posts/${id}`, {
 				method: "PUT",
-				body: { fullname },
+				body: { title },
 			})
 				.catch((e) => {
 					// useToast().error(e.data.message);
 				})
 				.then(async () => {
 					await this.getAll();
-					// useToast().success("Author updated");
+					// useToast().success("Post updated");
 				});
 		},
-		// delete an author
+		// delete an Post
 		async remove(id: string) {
-			await $fetch(`/api/users/${id}`, {
+			await $fetch(`/api/posts/${id}`, {
 				method: "DELETE",
 			})
 				.catch((e) => {
@@ -55,7 +55,7 @@ export const useUserstore = defineStore("user-store", {
 				})
 				.then(async () => {
 					await this.getAll();
-					// useToast().success("Author removed");
+					// useToast().success("Post removed");
 				});
 		},
 	},
