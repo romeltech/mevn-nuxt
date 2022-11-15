@@ -2,6 +2,10 @@
     <v-app-bar title="Posts" density="compact" class="elevation-1"></v-app-bar>
     <v-container>
         <v-row>
+            <div class="v-col-12 v-col-xl-10 mx-auto">
+                {{ postStore }}
+            </div>
+
             <div class="v-col-12 v-col-xl-10 mx-auto" v-if="posts">
                 <v-card max-width="100%">
                     <v-table width="100%">
@@ -36,9 +40,9 @@
 const postStore = usePoststore();
 
 // get data data on page load
-useAsyncData(async () => await postStore.getAll(), {
-    initialCache: false,
-});
+// useAsyncData(async () => await postStore.getAll(), {
+//     initialCache: false,
+// });
 
 // await postStore.getAll();
 // thePosts.value = postStore
