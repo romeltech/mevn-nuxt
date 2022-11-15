@@ -2,16 +2,19 @@ import PostModel from "~~/server/models/Post.model";
 import { PostSchema } from "~~/server/validation";
 
 export default defineEventHandler(async (event) => {
-  const body = await useBody(event);
+  let body = await useBody(event);
 
   // validate
   let { error } = PostSchema.validate(body);
   if (error) {
+    console.log("validation error");
     throw createError({
       message: error.message.replace(/"/g, ""),
       statusCode: 400,
       fatal: false,
     });
+  } else {
+    console.log("validation success");
   }
 
   // create Post

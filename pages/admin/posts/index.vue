@@ -1,10 +1,10 @@
 <template>
     <v-container class="py-8 px-6" fluid>
-        <v-app-bar title="Posts" class="elevation-1"></v-app-bar>
+        <v-app-bar title="Posts" dense class="elevation-1"></v-app-bar>
         <v-row>
-            <div class="col-12 col-md-10" v-if="posts">
-                <v-card>
-                    <v-table>
+            <div class="col-12 col-md-10 mx-auto" v-if="posts">
+                <v-card max-width="100%">
+                    <v-table width="100%">
                         <thead>
                             <tr>
                                 <th class="text-left">
@@ -16,7 +16,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="item in posts" :key="item._id">
+                            <tr v-for="(item, index) in posts" :key="index">
                                 <td>{{ item.title }}</td>
                                 <td>{{ item.text }}</td>
                             </tr>
@@ -28,6 +28,22 @@
     </v-container>
 </template>
 
-<script setup>
-const { data: posts } = await useFetch('http://localhost:3000/api/posts');
+
+<script setup lang="ts">
+
+import { usePoststore } from '../../../composables/postStore'
+// call post store
+const postStore = usePoststore();
+
+// get data data on page load
+useAsyncData(async () => await postStore.getAll(), {
+    initialCache: false,
+});
+// await postStore.getAll();
+// thePosts.value = postStore
+// console.log("thePosts", thePosts.value);
+
+// get data from api using useFetch
+const { data: posts } = await useFetch('/api/posts');
+
 </script>
