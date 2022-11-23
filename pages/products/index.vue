@@ -4,7 +4,7 @@
         <v-row>
             <div class="v-col-12 v-col-xl-10 mx-auto">
                 <div class="products-wrapper">
-                    <div v-for="p in products">
+                    <div v-for="p in item">
                         <ProductCard :product="p" />
                     </div>
                 </div>
@@ -16,7 +16,11 @@
 // definePageMeta({
 //     layout: 'products'
 // })
+let item = ref([]);
 const { data: products } = await useFetch('https://fakestoreapi.com/products');
+if (products) {
+    item = products
+}
 
 useHead({
     title: "Products",
