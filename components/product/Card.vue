@@ -1,7 +1,7 @@
 <template>
     <div class="card">
         <div class="card-image">
-            <img :src="product.image" :alt="product.title" style="width: 100%; height: auto;">
+            <v-img :src="product.image" :alt="product.title" style="width: 100%; height: auto;"></v-img>
         </div>
         <div class="card-title">{{ product.title }}</div>
         <v-btn color="primary" :to="`/products/${product.id}`">

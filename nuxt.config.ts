@@ -34,4 +34,15 @@ export default defineNuxtConfig({
       },
     ],
   ],
+  app: {
+    head: {
+      title: "Romel Tech",
+      meta: [{ name: "description", content: "Nuxt Starter Pack" }],
+      // link: [
+      //   {
+      //     rel: "stylesheet", href: "#"
+      //   },
+      // ],
+    },
+  },
 });

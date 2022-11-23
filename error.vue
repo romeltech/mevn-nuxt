@@ -10,7 +10,10 @@
                         <div>
                             {{ error.message }}
                         </div>
-                        <v-btn :to="'/'" class="mt-5" width="100%" color="primary" size="large">HOME</v-btn>
+                        <!-- <v-btn :to="'/'" class="mt-5" width="100%" color="primary" size="large">HOME</v-btn> -->
+                        <v-btn class="mt-5" width="100%" color="primary" size="large" @click="handleClearError">
+                            Home
+                        </v-btn>
                     </div>
                 </v-row>
             </v-container>
@@ -20,7 +23,7 @@
 
 <script setup>
 defineProps(['error'])
-
+const handleClearError = () => clearError({ redirect: '/' })
 </script>
 
 <style scoped>
