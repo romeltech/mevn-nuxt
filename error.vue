@@ -3,7 +3,7 @@
         <v-main>
             <v-container class="fluid">
                 <v-row style="min-height: 100vh;">
-                    <div class="ma-auto text-center">
+                    <div class="v-col-4 ma-auto text-center">
                         <div class="text-h1 font-weight-bold">
                             {{ error.statusCode }}
                         </div>
@@ -11,7 +11,7 @@
                             {{ error.message }}
                         </div>
                         <!-- <v-btn :to="'/'" class="mt-5" width="100%" color="primary" size="large">HOME</v-btn> -->
-                        <v-btn class="mt-5" width="100%" color="primary" size="large" @click="handleClearError">
+                        <v-btn class="mt-5 mx-auto" color="primary" size="large" @click="handleClearError">
                             Home
                         </v-btn>
                     </div>
